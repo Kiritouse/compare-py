@@ -16,13 +16,13 @@ def run(my_cpp_filename, correct_cpp_filename):
 
 def check(my_cpp_filename, correct_cpp_filename):
     # 逐行对比运行结果
-    with open(f'{my_cpp_filename}.dat', 'r') as my, open(f'{correct_cpp_filename}.dat', 'r') as correct:
-        print('-----------All Error-----------')
+    with open(f'{my_cpp_filename}.dat', 'r') as my, open(f'{correct_cpp_filename}.dat', 'r') as correct,open('log.txt', 'w') as log:
+        log.write('-----------All Error-----------\n')
         for (i, (a, b)) in enumerate(zip(my, correct)):
             if a != b:
-                print('line ' + str(i + 1))
-                print('---MY:' + a)
-                print('---AC:' + b)
+                log.write('line ' + str(i + 1) + '\n')
+                log.write('---MY:' + a)
+                log.write('---AC:' + b)
                 return False
     return True
 
